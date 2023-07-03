@@ -10,7 +10,7 @@ public:
                 cnt = prices[i];
             }
             uttor = prices[i] - cnt;
-            if(ans < uttor){
+            if(and < uttor){
                 ans = uttor;
             }
         }
