@@ -14,21 +14,21 @@ public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
         if(p==NULL and q==NULL){
             return true;
-        }
-        if(p==NULL and q!=NULL){
+        }else if(p==NULL or q==NULL){
+            return false;
+        }else if(p->val != q->val){
             return false;
         }
-        if(p!=NULL and q==NULL){
-            return false;
-        }
-        bool left = isSameTree(p->left, q->left);
-        bool right = isSameTree(p->right, q->right);
-        bool current = p->val == q->val;
 
-        if(left && right && current){
-            return true;
-        }else{
-            return false;
-        }
+        return isSameTree(p->left, q->left) and isSameTree(p->right, q->right);
+        // bool left = isSameTree(p->left, q->left);
+        // bool right = isSameTree(p->right, q->right);
+        // bool current = p->val == q->val;
+
+        // if(left && right && current){
+        //     return true;
+        // }else{
+        //     return false;
+        // }
     }
 };
