@@ -1,19 +1,20 @@
 class Solution {
 public:
     //For checking prime numbers
-    // bool prime[10000000];
-    // void Sieve(){
-    //     int n = 999999;
-    //     memset(prime, true, sizeof(prime));
+    bool prime[10000000];
+    void Sieve(){
+        int n = 999999;
+        memset(prime, true, sizeof(prime));
     
-    //     for (int p = 2; p * p <= n; p++) {
-    //         if (prime[p] == true) {
-    //             for (int i = p * p; i <= n; i += p){
-    //                 prime[i] = false;
-    //             }
-    //         }
-    //     }
-    // }
+        for (int p = 2; p * p <= n; p++) {
+            if (prime[p] == true) {
+                for (int i = p * p; i <= n; i += p){
+                    prime[i] = false;
+                }
+            }
+        }
+    }
+    bool flag = true;
     bool isPrime(int num){
         for(int i=2; i*i<=num; i++){
             if(num%i==0){
@@ -28,7 +29,7 @@ public:
         }
 
         num = num*10+mat[i][j];
-        if(num>10 and isPrime(num)){
+        if(num>10 and prime[num]){
             cout<<num<<endl;
             mp[num]++;
         }
@@ -39,7 +40,13 @@ public:
         int n = mat.size();
         int m = mat[0].size();
         map<int,int>mp;
-        // Sieve();
+        
+        if(flag){
+            Sieve();
+            flag = false;
+        }
+        
+        
         int direc[8][2] = {{-1, -1},{-1, 0},{-1, 1},{0, -1},{0, 1},{1, -1},{1, 0},{1, 1}};
 
         for(int i=0; i<n; i++){
