@@ -15,14 +15,7 @@ public:
         }
     }
     bool flag = true;
-    bool isPrime(int num){
-        for(int i=2; i*i<=num; i++){
-            if(num%i==0){
-                return false;
-            }
-        }
-        return true;
-    }
+    
     void solve(int i, int j, int n, int m, int dir1, int dir2, int num, vector<vector<int>>& mat, map<int,int>&mp){
         if(i<0 or j<0 or i>=n or j>=m){
             return;
