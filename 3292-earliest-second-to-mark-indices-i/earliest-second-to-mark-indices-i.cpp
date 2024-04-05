@@ -22,7 +22,7 @@ public:
         }
 
         for(auto it: mp){
-            if(it.second + 1 + marking_sec <= it.first){
+            if(it.second + 1 + marking_sec <= it.first){ //checking if marking time is less than or equal the last index it appears.
                 marking_sec += it.second+1;
             }else{
                 return false;
