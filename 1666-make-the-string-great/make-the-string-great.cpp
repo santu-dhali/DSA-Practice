@@ -2,7 +2,7 @@ class Solution {
 public:
     string makeGood(string s) {
         int n = s.size();
-        stack<int>st, st2;
+        stack<char>st;
         string ans="";
         int i=0;
         st.push(s[i++]);
@@ -19,14 +19,9 @@ public:
             }
             i++;
         }
-
         while(!st.empty()){
-            st2.push(st.top());
+            ans = st.top()+ans;
             st.pop();
-        }
-        while(!st2.empty()){
-            ans += st2.top();
-            st2.pop();
         }
         return ans;
     }
