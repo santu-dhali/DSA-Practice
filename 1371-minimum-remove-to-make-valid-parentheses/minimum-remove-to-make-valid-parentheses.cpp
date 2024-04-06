@@ -17,7 +17,9 @@ public:
             }
         }
         for(int i=n-1; i>=0; i--){
-            if(count > 0 and s[i] == '('){
+            if(count == 0){
+                break;
+            }else if(count > 0 and s[i] == '('){
                 count--;
                 s[i]='*';
             }
