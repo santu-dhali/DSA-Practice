@@ -1,11 +1,11 @@
 class Solution {
 public:
     int maximalRectangle(vector<vector<char>>& matrix) {
-        if (matrix.empty() || matrix[0].empty())
-            return 0;
-        
         int rows = matrix.size();
         int cols = matrix[0].size();
+        if (rows==0 || cols==0)
+            return 0;
+        
         vector<int> heights(cols + 1, 0); // Include an extra element for easier calculation
         int maxArea = 0;
         
