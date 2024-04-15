@@ -20,10 +20,9 @@ public:
 
         if(root->left==NULL and root->right==NULL){
             ans.push_back(s);
-        }else{
-            solve(root->left, ans, s);
-            solve(root->right, ans, s);
         }
+        solve(root->left, ans, s);
+        solve(root->right, ans, s);
     }
     int sumNumbers(TreeNode* root) {
         vector<string>ans;
@@ -33,7 +32,6 @@ public:
         solve(root, ans, "");
         int sum = 0;
         for(auto it: ans){
-            cout<<it<<endl;
             sum += stoi(it);
         }
         return sum;
