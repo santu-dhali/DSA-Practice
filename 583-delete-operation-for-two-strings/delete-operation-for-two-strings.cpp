@@ -15,14 +15,10 @@ public:
         }
     }
     
-    int longestPalindromeSubseq(string word1, string word2) {
-        int n = word1.size(), m = word2.size();
-        vector<vector<int>>dp(n+1, vector<int>(m+1, -1));
-        return LCS(n, m, word1, word2, dp);
-    }
 
     int minDistance(string word1, string word2) {
         int n = word1.size(), m = word2.size();
-        return (n+m) - 2*longestPalindromeSubseq(word1, word2);
+        vector<vector<int>>dp(n+1, vector<int>(m+1, -1));
+        return (n+m) - 2*LCS(n, m, word1, word2, dp);
     }
 };
