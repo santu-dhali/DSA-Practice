@@ -1,20 +1,25 @@
 class Solution {
 public:
     bool checkSubarraySum(vector<int>& nums, int k) {
-        unordered_map<int,int>mp;
-        mp[0]=-1;
-        //sum of the elements of the subarray is a multiple of k
-        int sum=0;
-        for(int i=0; i<nums.size(); i++){
-            sum+=nums[i];
-            if(mp.find(sum%k)!=mp.end()){
-                if(i-mp[sum%k]>=2)
-                    return true;
+        int r = 1;
+        int l = 0;
+        int sum=nums[l], n = nums.size();
+        while(r<n){
+            sum+=nums[r];
+            if(sum%k == 0){
+                return true;
             }
-            else
-                mp[sum%k]=i;
+            if(nums[r] == nums[r-1] && nums[r] == 0){
+                return true;
+            }
+            int x = sum;
+            l=0;
+            while((r-l)>1 && x>=k){
+                x-=nums[l++];
+                if(x%k == 0) return true;
+            }
+            r++;
         }
         return false;
-
     }
 };
